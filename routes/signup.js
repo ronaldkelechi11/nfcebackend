@@ -12,6 +12,33 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
+    var email = req.body.email;
+    var password = req.body.password;
+    var address = req.body.address;
+    var dob = req.body.dob;
+    var dateAccountCreated = req.body.dateAccountCreated;
+    var phoneNumber = req.body.phoneNumber;
+    var bussinessVentureName = req.body.bussinessVentureName;
+    var accountBalance = req.body.accountBalance;
+    var transactionPin = req.body.transactionPin;
+
+    var insertQuery = "INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `address`, `dob`, `dateAccountCreated`, `phoneNumber`, `bussinessVentureName`, `accountBalance`, `transactionPin`) VALUES (NULL, '" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "', '" + address + "', '" + dob + ", '" + dateAccountCreated + "', '" + phoneNumber + "', '" + bussinessVentureName + "', '" + accountBalance + "', '" + transactionPin + "');"
+
+    db.getConnection((err, pool) => {
+        if (err) {
+            console.log(err);
+        }
+        pool.query(insertQuery, (error, result, fields) => {
+            if (error) {
+                res.status(404).send()
+            }
+            else (
+                res.status(200).send()
+            )
+        });
+    });
 
 });
 

@@ -11,9 +11,11 @@ app.use(express.urlencoded())
 
 // Routes declaration
 const signUpServer = require("./routes/signup")
+const loginServer = require("./routes/login")
 
 // Routes assigning
 app.use("/signUp", signUpServer)
+app.use("/login", loginServer)
 
 
 // Server Home

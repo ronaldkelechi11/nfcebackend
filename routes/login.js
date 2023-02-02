@@ -13,6 +13,18 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
 
+    db.getConnection((err, pool) => {
+        if (err) {
+            console.log(err);
+        }
+        pool.query("Select * FROM users", (error, result, fields) => {
+            res.status(200).send()
+            console.log(JSON.stringify(result));
+            pool.release()
+        })
+    });
+
+
 });
 
 // Export
