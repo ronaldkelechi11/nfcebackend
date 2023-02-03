@@ -19,6 +19,7 @@ router.post("/", (req, res) => {
     var password = "password23";
 
     var searchQuery = "SELECT * FROM users WHERE email  = '" + email + "' AND password = '" + password + "';"
+
     db.getConnection((err, pool) => {
         console.log(searchQuery);
         if (err) {
