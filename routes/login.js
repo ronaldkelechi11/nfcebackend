@@ -12,21 +12,30 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+    // var email = req.body.email;
+    // var password = req.body.password;
 
+    var email = "ronaldkelechi11@gmail.com";
+    var password = "password23";
+
+    var searchQuery = "SELECT * FROM users WHERE email  = '" + email + "' AND password = '" + password + "';"
     db.getConnection((err, pool) => {
+        console.log(searchQuery);
         if (err) {
             console.log(err);
         }
-        pool.query("Select * FROM users", (error, result, fields) => {
-            res.status(200).send()
-            console.log(JSON.stringify(result));
-            pool.release()
+        pool.query(searchQuery, (error, result, fields) => {
+            if (result[0] == null) {
+                res.status(401).send()
+            }
+            else {
+                res.status(201).send(JSON.stringify(result[0]));
+            }
+
         })
     });
-
 
 });
 
 // Export
-
 module.exports = router

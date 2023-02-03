@@ -33,6 +33,7 @@ router.post("/", (req, res) => {
         pool.query(insertQuery, (error, result, fields) => {
             if (error) {
                 res.status(404).send()
+                // Should send email
             }
             else (
                 res.status(200).send()
