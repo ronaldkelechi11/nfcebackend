@@ -26,36 +26,18 @@ router.post("/", (req, res) => {
     var accountBalance = req.body.accountBalance;
     var transactionPin = req.body.transactionPin;
 
-    var details = {
-        from: "<We-Hub Mailer> wehubfreelanceagaency@gmail.com",
-        to: "wehubfreelanceagaency@gmail.com",
-        subject: "New User Sign Up Notification",
-        text: "Welcome ronald, to Nana Fatimah Co-operative entreprise. we do this and that if this was not you that signed up click here"
-        // text: "Welcome " + firstname + ", to Nana Fatimah Co-operative entreprise. we do this and that if this was not you that signed up click here"
-    }
-
-    var insertQuery = "INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `address`, `dob`, `dateAccountCreated`, `phoneNumber`, `bussinessVentureName`, `accountBalance`, `transactionPin`) VALUES (NULL, 'badamusi', 'franklin', 'wehubfreelanceagency@gmail.com', 'Livingfaith33', 'mapape', '07/09/2005', '2nd February 2023', '09066881954', 'We-Hub Freelance', '300.0', '0705');"
-
-    // var insertQuery = "INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `address`, `dob`, `dateAccountCreated`, `phoneNumber`, `bussinessVentureName`, `accountBalance`, `transactionPin`) VALUES (NULL, '" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "', '" + address + "', '" + dob + ", '" + dateAccountCreated + "', '" + phoneNumber + "', '" + bussinessVentureName + "', '" + accountBalance + "', '" + transactionPin + "');";
+    var insertQuery = "INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `address`, `dob`, `dateAccountCreated`, `phoneNumber`, `bussinessVentureName`, `accountBalance`, `transactionPin`) VALUES (NULL, '" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "', '" + address + "', '" + dob + "', '" + dateAccountCreated + "', '" + phoneNumber + "', '" + bussinessVentureName + "', '" + accountBalance + "', '" + transactionPin + "');";
 
     db.getConnection((err, pool) => {
         if (err) console.log(err);
         else {
             pool.query(insertQuery, (error, result, rows) => {
                 if (error == null) {
-                    res.status(200).send("Succesful");
-
-
-                    mailer.sendMail((errorMailer, mailTransporter) => {
-                        if (errorMailer) console.log(errorMailer);
-                        mailTransporter.sendMail(details, (errorMail) => {
-                            console.log("Email Sent");
-                        })
-                    })
-
-
+	     console.log("New SignUp");
+                    res.status(200).send("Succesful")
                 }
                 else {
+	console.log("Duplicate Entry");
                     res.status(404).send("Duplicate Entry")
                 }
             })
