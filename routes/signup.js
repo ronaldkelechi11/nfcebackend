@@ -1,7 +1,5 @@
 const express = require('express');
 const db = require("../providers/db");
-const { sendMail } = require('../providers/mailer');
-const mailer = require("../providers/mailer");
 const router = express.Router();
 
 // Middleware
@@ -33,11 +31,11 @@ router.post("/", (req, res) => {
         else {
             pool.query(insertQuery, (error, result, rows) => {
                 if (error == null) {
-	     console.log("New SignUp");
+                    console.log("New SignUp");
                     res.status(200).send("Succesful")
                 }
                 else {
-	console.log("Duplicate Entry");
+                    console.log("Duplicate Entry");
                     res.status(404).send("Duplicate Entry")
                 }
             })

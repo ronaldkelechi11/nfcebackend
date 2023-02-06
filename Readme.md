@@ -18,3 +18,4 @@ created with __Node.js__ and __Express.js__.
 |---|---|---|
 |signup| _post_|200(__succesful__) <br> 404(__duplicate_entry__)|
 |login| post|201(__succesful__) <br> 401(__no user found__) <br> returns ___user___|
+|dashboard| get|200 (__succesful__) <br>401(__no user found__) <br>return ___user___|

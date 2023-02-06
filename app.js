@@ -1,6 +1,7 @@
 const { urlencoded } = require('body-parser');
 const express = require('express');
 const app = express()
+const { createPool } = require('mysql');
 
 // Values
 var port = process.env.port || 5050
@@ -8,6 +9,15 @@ var port = process.env.port || 5050
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded())
+
+// MySql Values
+const pool = createPool({
+    connectionLimit: 10,
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "nfcedb"
+})
 
 // Routes declaration
 const signUpServer = require("./routes/signup")
@@ -27,4 +37,10 @@ app.get("/", (req, res) => {
 // Start Server
 app.listen(port, (err, res) => {
     console.log("Server is online on " + port);
-}) 
+    // Testing Mysql Connection
+    pool.connect((err) => {
+        console.log("Cant Connect to MySQL Server");
+    })
+})
+
+
