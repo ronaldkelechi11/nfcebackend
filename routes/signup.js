@@ -12,6 +12,8 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+    console.log("Trying to Sign Up...");
+
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var email = req.body.email;

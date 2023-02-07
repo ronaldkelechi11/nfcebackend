@@ -12,16 +12,13 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    // var email = req.body.email;
-    // var password = req.body.password;
-
-    var email = "ronaldkelechi11@gmail.com";
-    var password = "password23";
+    console.log("Trying to Sign In");
+    var email = req.body.email;
+    var password = req.body.password;
 
     var searchQuery = "SELECT * FROM users WHERE email  = '" + email + "' AND password = '" + password + "';"
 
     db.getConnection((err, pool) => {
-        console.log(searchQuery);
         if (err) {
             console.log(err);
         }
