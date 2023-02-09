@@ -3,8 +3,8 @@ const db = require("../providers/db");
 const router = express.Router();
 
 // Middleware
-app.use(express.json())
-app.use(express.urlencoded())
+router.use(express.json())
+router.use(express.urlencoded())
 
 // RESTful routes
 router.get("/:id", (req, res) => {
