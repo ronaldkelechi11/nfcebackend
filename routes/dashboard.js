@@ -7,9 +7,9 @@ router.use(express.json())
 router.use(express.urlencoded())
 
 // RESTful routes
-router.get("/:id", (req, res) => {
-    var id = req.params.id;
-    var getUser = "SELECT * FROM users WHERE id = '" + id + "' ;"
+router.get("/:email", (req, res) => {
+    var email = req.params.email;
+    var getUser = "SELECT * FROM users WHERE id = '" + email + "' ;"
 
     db.getConnection((err, pool) => {
         pool.query(getUser, (error, result, fields) => {
@@ -18,9 +18,21 @@ router.get("/:id", (req, res) => {
                 res.status(401).send()
             }
             else {
-                var dataToParse = JSON.stringify(result);
-                console.log(dataToParse);
-                res.status(200).send(dataToParse);
+                var obj = {
+                    id: result[0].id,
+                    firstname: result[0].firstname,
+                    lastname: result[0].lastname,
+                    email: result[0].email,
+                    password: result[0].password,
+                    address: result[0].address,
+                    dob: result[0].dob,
+                    dateAccountCreated: result[0].dateAccountCreated,
+                    phoneNumber: result[0].phoneNumber,
+                    bussinessVentureName: result[0].bussinessVentureName,
+                    accountBalance: result[0].accountBalance,
+                    transactionPin: result[0].transactionPin
+                }
+                res.status(201).send(JSON.stringify(obj));
             }
         });
     });
