@@ -38,4 +38,42 @@ router.get("/:email", (req, res) => {
     });
 });
 
+router.post("/forgotPassword", (req, res) => {
+    var newPassword = req.body.password;
+    var email = req.body.email
+    var query = "UPDATE `users` SET `password`='" + newPassword + "' WHERE email = " + email + ";"
+
+    db.getConnection((err, pool) => {
+        pool.query(query, (error, result) => {
+            if (error) {
+                // Couldnt change password
+                res.status(401).send()
+            }
+            else {
+                // Password changed 
+                res.status(200).send()
+            }
+        });
+    })
+});
+
+router.post("/changePin", (req, res) => {
+    var newPin = req.body.transactionPin
+    var email = req.body.email
+    var query = "UPDATE `users` SET `transactionPin`='" + newPin + "' WHERE email = " + email + ";"
+
+    db.getConnection((err, pool) => {
+        pool.getConnection((error, result) => {
+            if (error) {
+                // Couldnt change password
+                res.status(401).send()
+            }
+            else {
+                // Password changed 
+                res.status(200).send()
+            }
+        })
+    })
+})
+
 module.exports = router
