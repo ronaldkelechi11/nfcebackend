@@ -9,7 +9,8 @@ router.use(express.urlencoded())
 // RESTful routes
 router.get("/:email", (req, res) => {
     var email = req.params.email;
-    var getUser = "SELECT * FROM users WHERE id = '" + email + "' ;"
+    console.log(email);
+    var getUser = "SELECT * FROM `users` WHERE email = '" + email + "';"
 
     db.getConnection((err, pool) => {
         pool.query(getUser, (error, result, fields) => {
@@ -32,7 +33,8 @@ router.get("/:email", (req, res) => {
                     accountBalance: result[0].accountBalance,
                     transactionPin: result[0].transactionPin
                 }
-                res.status(201).send(JSON.stringify(obj));
+                console.log(obj);
+                res.status(200).send(JSON.stringify(obj));
             }
         });
     });
