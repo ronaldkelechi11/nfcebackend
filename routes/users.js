@@ -6,8 +6,9 @@ const router = express.Router();
 router.use(express.json())
 router.use(express.urlencoded())
 
-router.get("/", (req, res) => {
-    var query = "SELECT * FROM users"
+router.get("/:email", (req, res) => {
+    var email = req.params.email;
+    var query = "SELECT * FROM users WHERE email != '" + email + "' ;"
     db.getConnection((err, pool) => {
         if (err) console.log(err);
         pool.query(query, (error, result) => {

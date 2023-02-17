@@ -35,7 +35,7 @@ app.use("/users", userServer)
 // Server Home
 app.get("/", (req, res) => {
     res.send("Welcome to the NFCE API SERVICE")
-    console.log("Welcome to the NFCE API SERVICE");
+    console.log("Someone is trying to acces the API");
 })
 
 

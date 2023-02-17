@@ -47,6 +47,7 @@ router.post("/forgotPassword", (req, res) => {
     db.getConnection((err, pool) => {
         pool.query(query, (error, result) => {
             if (error) {
+                console.log(error);
                 // Couldnt change password
                 res.status(401).send()
             }
@@ -64,7 +65,7 @@ router.post("/changePin", (req, res) => {
     var query = "UPDATE `users` SET `transactionPin`='" + newPin + "' WHERE email = " + email + ";"
 
     db.getConnection((err, pool) => {
-        pool.getConnection((error, result) => {
+        pool.getConnection(query, (error, result) => {
             if (error) {
                 // Couldnt change password
                 res.status(401).send()
