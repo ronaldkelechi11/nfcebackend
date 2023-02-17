@@ -23,11 +23,13 @@ const connection = createConnection({
 const signUpServer = require("./routes/signup")
 const loginServer = require("./routes/login")
 const dashboardServer = require("./routes/dashboard")
+const userServer = require("./routes/users")
 
 // Routes assigning
 app.use("/signUp", signUpServer)
 app.use("/login", loginServer)
 app.use("/dashboard", dashboardServer)
+app.use("/users", userServer)
 
 
 // Server Home

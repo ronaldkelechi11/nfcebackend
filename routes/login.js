@@ -44,7 +44,6 @@ router.post("/", (req, res) => {
                     accountBalance: result[0].accountBalance,
                     transactionPin: result[0].transactionPin
                 }
-                console.log(obj);
                 res.status(201).send(JSON.stringify(obj));
             }
 
