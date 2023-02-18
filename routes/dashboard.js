@@ -42,16 +42,18 @@ router.get("/:email", (req, res) => {
 router.post("/forgotPassword", (req, res) => {
     var newPassword = req.body.password;
     var email = req.body.email
-    var query = "UPDATE `users` SET `password`='" + newPassword + "' WHERE email = " + email + ";"
+    var query = "UPDATE `users` SET password = '" + newPassword + "' WHERE email = '" + email + "' ;"
 
     db.getConnection((err, pool) => {
+        if (err) console.log(err);
         pool.query(query, (error, result) => {
             if (error) {
-                console.log(error);
+                console.log("This is error: " + error);
                 // Couldnt change password
                 res.status(401).send()
             }
             else {
+                console.log(email + " just changed password");
                 // Password changed 
                 res.status(200).send()
             }
@@ -62,16 +64,17 @@ router.post("/forgotPassword", (req, res) => {
 router.post("/changePin", (req, res) => {
     var newPin = req.body.transactionPin
     var email = req.body.email
-    var query = "UPDATE `users` SET `transactionPin`='" + newPin + "' WHERE email = " + email + ";"
+    var query = "UPDATE `users` SET `transactionPin`= '" + newPin + "' WHERE email = '" + email + "';"
 
     db.getConnection((err, pool) => {
-        pool.getConnection(query, (error, result) => {
+        pool.query(query, (error, result) => {
             if (error) {
                 // Couldnt change password
                 res.status(401).send()
             }
             else {
-                // Password changed 
+                console.log(email + " just changed pin");
+                // Pin changed 
                 res.status(200).send()
             }
         })

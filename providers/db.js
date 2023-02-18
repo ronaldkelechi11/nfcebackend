@@ -1,11 +1,11 @@
-const { createPool } = require('mysql');
+const { createPool, createConnection } = require('mysql');
 
 const pool = createPool({
-    connectionLimit: 10,
     host: "localhost",
     user: "root",
     password: "",
-    database: "nfcedb"
+    database: "nfcedb",
+    connectionLimit: 20
 })
 
 /* To make a query use 
