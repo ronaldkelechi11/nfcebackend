@@ -7,6 +7,7 @@ const { createPool, createConnection } = require('mysql');
 var port = process.env.port || 5050
 
 // Middleware
+app.use(express.static("./"))
 app.use(express.json())
 app.use(express.urlencoded())
 

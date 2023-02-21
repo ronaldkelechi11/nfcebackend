@@ -5,43 +5,104 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Deposit</title>
 
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="../public/script.js" type="module"></script>
 </head>
-<style>
-    body {
-        font-family: sans-serif;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-    }
-</style>
 
 <body>
+    <h1>Nana Fatimah <br> Co-operative Entreprise</h1>
+    <h2>Make a Deposit</h2>
     <form id="paymentForm">
         <div class="form-group">
-            <label for="email">Email Address</label>
+            <label for="email">Email Address</label><br>
             <input type="email" id="email-address" required />
         </div>
         <div class="form-group">
-            <label for="amount">Amount</label>
-            <input type="tel" id="amount" required />
+            <label for="amount">Amount<span>(in Naira)</span></label><br>
+            <input type="tel" id="amount" required placeholder="N50.00" />
         </div>
         <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" id="first-name" />
+            <label for="first-name">First Name</label><br>
+            <input type="text" id="first-name" required placeholder="John" />
         </div>
         <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" />
+            <label for="last-name">Last Name</label><br>
+            <input type="text" id="last-name" required placeholder="Doe" />
         </div>
         <div class="form-submit">
-            <button type="submit" onclick="payWithPaystack()"> Pay </button>
+            <button type="submit" onclick="payWithPaystack()"> Deposit </button>
         </div>
     </form>
+    <style>
+        @media screen and (max-width: 440px) {
+            :root {
+                --primary: #019d19;
+            }
 
-    <script src="https://js.paystack.co/v1/inline.js"></script>
-    <script src="script.js"></script>
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
+
+            body {
+                width: 100vw;
+                height: 100vh;
+                font-family: sans-serif;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            h1 {
+                text-align: center;
+                position: fixed;
+                top: 30px;
+                color: var(--primary);
+                font-size: 28px;
+            }
+
+            h2 {
+                text-align: center;
+                color: black;
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            label {
+                font-size: 14px;
+                font-family: sans-serif;
+            }
+
+            input {
+                outline: none;
+                color: black;
+                font-family: sans-serif;
+                border-radius: var(--primary);
+                border: 2px;
+                border-color: var(--primary);
+                border-radius: 10px;
+                margin-top: 5px;
+                margin-bottom: 10px;
+                border-style: solid;
+                height: 20px;
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            button {
+                width: 100%;
+                margin-top: 20px;
+                padding: 10px;
+                border: none;
+                border-radius: 10px;
+                background-color: var(--primary);
+                color: white;
+            }
+        }
+    </style>
 </body>
 
-</html>
+</html

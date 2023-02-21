@@ -13,7 +13,8 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
     console.log("Trying to Sign Up...");
-
+    var createRandom = Math.floor((Math.random() * 1000000000) + 1);
+    var id = createRandom;
     var firstname = req.body.firstname;
     var lastname = req.body.lastname;
     var email = req.body.email;
@@ -26,7 +27,7 @@ router.post("/", (req, res) => {
     var accountBalance = req.body.accountBalance;
     var transactionPin = req.body.transactionPin;
 
-    var insertQuery = "INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `address`, `dob`, `dateAccountCreated`, `phoneNumber`, `bussinessVentureName`, `accountBalance`, `transactionPin`) VALUES (NULL, '" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "', '" + address + "', '" + dob + "', '" + dateAccountCreated + "', '" + phoneNumber + "', '" + bussinessVentureName + "', '" + accountBalance + "', '" + transactionPin + "');";
+    var insertQuery = "INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `address`, `dob`, `dateAccountCreated`, `phoneNumber`, `bussinessVentureName`, `accountBalance`, `transactionPin`) VALUES ('" + id + "','" + firstname + "', '" + lastname + "', '" + email + "', '" + password + "', '" + address + "', '" + dob + "', '" + dateAccountCreated + "', '" + phoneNumber + "', '" + bussinessVentureName + "', '" + accountBalance + "', '" + transactionPin + "');";
 
     // var insertQuery = "INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password`, `address`, `dob`, `dateAccountCreated`, `phoneNumber`, `bussinessVentureName`, `accountBalance`, `transactionPin`) VALUES (NULL, 'badman', 'franklin', 'ijeoma@g', 'Livingfaith33', 'mapape', '07/09/2005', '2nd February 2023', '09066881954', 'We-Hub Freelance', '300.0', '0705');"
 
