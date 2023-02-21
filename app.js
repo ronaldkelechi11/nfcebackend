@@ -12,7 +12,7 @@ app.use(express.urlencoded())
 
 // MySql Values
 const connection = createConnection({
-    connectionLimit: 10,
+    connectionLimit: 30,
     host: "localhost",
     user: "root",
     password: "",
@@ -24,13 +24,14 @@ const signUpServer = require("./routes/signup")
 const loginServer = require("./routes/login")
 const dashboardServer = require("./routes/dashboard")
 const userServer = require("./routes/users")
+const depositServer = require("./routes/deposit")
 
 // Routes assigning
 app.use("/signUp", signUpServer)
 app.use("/login", loginServer)
 app.use("/dashboard", dashboardServer)
 app.use("/users", userServer)
-
+app.use("/deposit", depositServer)
 
 // Server Home
 app.get("/", (req, res) => {

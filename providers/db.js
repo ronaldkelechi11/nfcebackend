@@ -1,13 +1,12 @@
-const { createPool, createConnection } = require('mysql');
+const mysql = require('mysql');
 
-const pool = createPool({
+const pool = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "",
     database: "nfcedb",
-    connectionLimit: 20
+    connectionLimit: 200
 })
-
 /* To make a query use 
  const db = require("../providers/db")
  
@@ -18,9 +17,8 @@ const pool = createPool({
  }
 
 */
-
 module.exports = {
     getConnection: (callback) => {
         return pool.getConnection(callback)
-    }
+    },
 }
