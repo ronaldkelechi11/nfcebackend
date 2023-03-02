@@ -29,7 +29,6 @@ router.post("/", (req, res) => {
                 res.status(401).send()
             }
             else {
-                console.log(email + " has Logged in");
                 var obj = {
                     id: result[0].id,
                     firstname: result[0].firstname,

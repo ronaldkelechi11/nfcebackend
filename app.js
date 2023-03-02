@@ -43,6 +43,7 @@ app.get("/", (req, res) => {
 
 // Start Server
 app.listen(port, (err, res) => {
+    console.log(port);
     console.log("Server is online on " + port);
 })
 connection.connect((err) => {

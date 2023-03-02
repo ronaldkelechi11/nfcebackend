@@ -8,8 +8,7 @@ router.use(express.urlencoded())
 
 // RESTful routes
 router.get("/:email", (req, res) => {
-    var email = req.params.email;
-    console.log(email);
+    var email = req.params.email
     var getUser = "SELECT * FROM `users` WHERE email = '" + email + "';"
 
     db.getConnection((err, pool) => {

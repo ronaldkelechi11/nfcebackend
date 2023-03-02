@@ -14,7 +14,7 @@ function payWithPaystack(e) {
             //Send message to Node backend to close android window
         },
         callback: function (response) {
-            //Payment Complete
+            //Payment Complete/Succesful
             var params = {
                 amount: document.getElementById("amount").value,
                 email: document.getElementById("email-address").value
