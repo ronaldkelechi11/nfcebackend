@@ -25,14 +25,14 @@ const signUpServer = require("./routes/signup")
 const loginServer = require("./routes/login")
 const dashboardServer = require("./routes/dashboard")
 const userServer = require("./routes/users")
-const depositServer = require("./routes/deposit")
+const transactionServer = require("./routes/transaction")
 
 // Routes assigning
 app.use("/signUp", signUpServer)
 app.use("/login", loginServer)
 app.use("/dashboard", dashboardServer)
 app.use("/users", userServer)
-app.use("/deposit", depositServer)
+app.use("/transaction", transactionServer)
 
 // Server Home
 app.get("/", (req, res) => {
