@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     user: "root",
     password: "",
     database: "nfcedb",
-    connectionLimit: 200
+    connectionLimit: 2000
 })
 /* To make a query use 
  const db = require("../providers/db")
