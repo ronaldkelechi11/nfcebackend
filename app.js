@@ -13,11 +13,11 @@ app.use(express.urlencoded())
 
 // MySql Values
 const connection = createConnection({
-    connectionLimit: 30,
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "nfcedb"
+    host:"sql8.freesqldatabase.com",
+    user: "sql8605623",
+    password: "QiuZizWesJ",
+    database: "sql8605623",
+    port: 3306
 })
 
 // Routes declaration
